@@ -12,9 +12,9 @@ import Box from "./Box";
  */
 function BoxList() {
     const [boxes, setBoxes] = useState([]);
-//TODO: setboxes, filter, callback
-    function removeBox(evt) {
-        evt.target.parentElement.remove();
+
+    function removeBox(id) {
+        setBoxes(boxes => boxes.filter(box => box.id !== id))
       }
 
     function renderBoxes() {
@@ -22,7 +22,7 @@ function BoxList() {
             <div className="BoxList">
                 {boxes.map(box => (
                     <div key={box.id}>
-                        <Box boxData={box} removeBox={removeBox}/>
+                        <Box boxData={box} removeBox={() => removeBox(box.id)}/>
                     </div>
                 ))}
         </div>
