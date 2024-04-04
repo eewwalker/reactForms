@@ -33,6 +33,15 @@ function NewBoxForm({addBox}) {
         setFormData(initialState);
     }
 
+    /** Update local state w/curr state of input elem */
+    function handleChange(evt) {
+        const { name, value } = evt.target;
+        setFormData(fData => ({
+            ...fData,
+            [name]: value,
+        }))
+    }
+
     return(
         <div className="NewBoxForm">
             <form onSubmit={handleSubmit}>
